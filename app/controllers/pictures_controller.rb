@@ -1,6 +1,6 @@
-class PicturesController < ApplicationController
+class PicturesController < ApplicationController #passes data along to view
 	def index
-		@pictures = Picture.all
+		@most_recent_pictures = Picture.most_recent_five #limit(5)for example. .order(created_at: :desc).limit(5)
 	end
 
 	def show
@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
 	end 
 
 	def new
-		@picture = Picture.new
+		@picture = Picture.new #passing an empty object to form.
 	end
 
 	def create
@@ -42,7 +42,7 @@ class PicturesController < ApplicationController
 
 	private
 	def picture_params
-		params.require(:picture).permit(:artist, :title, :url)
+		params.require(:picture).permit(:artist, :title, :url) #why not @picture here?
 	end
 
 end
