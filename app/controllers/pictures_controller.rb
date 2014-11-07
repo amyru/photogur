@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController #passes data along to view
 	def index
 		@most_recent_pictures = Picture.most_recent_five #limit(5)for example. .order(created_at: :desc).limit(5)
+		@pictures = Picture.all
 	end
 
 	def show
